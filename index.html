@@ -6,6 +6,41 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>EUR valutas kalkulators</h1>
+    <input type="number" id="pirmaValuta">
+    <select id="otraValuta">
+        <option value="1">EUR</option>
+        <option value="2">GBP</option>
+        <option value="3">USD</option>
+        <option value="4">CHF</option>
+        <option value="5">SEK</option>
+    </select>
+    <button id="submit"></button>
+    <p id="totalValue"></p>
+
+
+    <script>
+    const baseRates = {
+        EUR: { EUR: 1.00, GBP: 0.86, USD: 1.09, CHF: 1.06, SEK: 11.45 },
+        GBP: { EUR: 1.16, GBP: 1.00, USD: 1.27, CHF: 1.23, SEK: 13.30 },
+        USD: { EUR: 0.92, GBP: 0.79, USD: 1.00, CHF: 0.97, SEK:10.48 },
+        CHF: { EUR: 0.94, GBP: 0.81, USD: 1.03, CHF: 1.00, SEK:10.80 },
+        SEK: { EUR: 0.087, GBP: 0.075, USD: 0.095, CHF: 0.093, SEK: 1.00 }
+    };
+
+    const euroRates = {
+        EUR: { EUR: 1.00, GBP: 0.86, USD: 1.09, CHF: 1.06, SEK: 11.45 }
+    };
+    const pirmaValuta = document.getElementById("pirmaValuta");
+    const otraValuta = document.getElementById("otraValuta");
+    const submit = document.getElementById("submit");
+    const totalValue = document.getElementById("totalValue");
+
+    totalValue.addEventListener("click", function(){
+        let totalValue = pirmaValuta.value * euroRates[otraValuta].value;
+        console.log("totalValue");
+    });
+
+    </script>
 </body>
 </html>
